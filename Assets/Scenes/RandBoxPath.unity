@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 2115977407}
   - component: {fileID: 2115977408}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: ObstacleManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
