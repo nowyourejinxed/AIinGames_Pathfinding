@@ -6,7 +6,9 @@ using UnityEngine.UIElements;
 public class MapManager : MonoBehaviour
 {
     private static MapManager _instance;
-    //add prefab for slot select
+    //add prefab for start point
+    public OverlayTile startTilePrefab;
+    public GameObject container;
     
     public static MapManager Instance
     {
@@ -38,14 +40,14 @@ public class MapManager : MonoBehaviour
                 for (int k = bounds.min.x; k < bounds.max.x; k++)
                 {
                     var tileLocation = new Vector3Int(k, j, i);
-                    //if (tileMap.HasTile( /*prefab*/))
-                    //{
-                        //var select = Instantiate(prefab, prefab.transform);
+                    if (tileMap.HasTile(tileLocation))
+                    {
+                        var select = Instantiate(startTilePrefab, container.transform);
                         var cellWorldPosition = tileMap.GetCellCenterWorld(tileLocation);
                         
-                        //select.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 1);
-                        //select.GetComponent<SpirteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
-                    //}
+                        select.transform.position = new Vector3(cellWorldPosition.x, cellWorldPosition.y, cellWorldPosition.z + 1);
+                        select.GetComponent<SpriteRenderer>().sortingOrder = tileMap.GetComponent<TilemapRenderer>().sortingOrder;
+                    }
                 }
             }
         }
